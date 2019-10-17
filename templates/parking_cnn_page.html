@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title> KETI LoRa device manager </title>
+
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.css') }}"/>
+
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/styleMgmtPage.css') }}">
+
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+        <!-- Font Awesome JS -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+                integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+                crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+                integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+                crossorigin="anonymous"></script>
+
+        <!-- Setting the JQuery & JQuery-UI -->
+        <script src="{{url_for('static', filename='scripts/jquery.js') }}"></script>
+
+        <!-- Bootstrap JS -->
+        <script src="{{url_for('static', filename='bootstrap/js/jquery.js') }}"></script>
+
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+        <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#sidebar").mCustomScrollbar({
+                        theme: "minimal"
+                    });
+                    $('#sidebarCollapse').on('click', function () {
+                        $('#sidebar, #content').toggleClass('active');
+                        $('.collapse.in').toggleClass('in');
+                        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                    });
+                });
+
+        </script>
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <!-- Sidebar  -->
+            <nav id="sidebar">
+                <div align="center" class="sidebar-header">
+                    <a href="http://localhost:62590/loraWebHome"><img
+                            src="{{url_for('static', filename='images/logo_parking.png') }}" align="center" width="100px"
+                            height="100px"></a>
+                </div>
+
+                <ul class="side_list list-unstyled components">
+                    <li>
+                        <a href="http://localhost:62590/loraWebHome">Home</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:62590/loraPoC.html">PoC Architecture</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:62590/loraSensorsMgmt.html">Sensors</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:62590/loraIPEsMgmt.html">IPEs</a>
+                    </li>
+                    <li>
+                        <a href="http://127.0.0.7:5000/loraParkingMonitoring.html">Parking Monitoring</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:62590/loraAbout.html">About</a>
+                    </li>
+                    <li>
+                        <a href="http://localhost:62590/loraWebContactUS.html">Contact US</a>
+                    </li>
+                </ul>
+
+                <div class="logo_image_div" style="height:60px;width:240px">
+                    <image class="logo_image sync_city_image" src="{{url_for('static', filename='images/logo_sync_city.png')}}"
+                           , style="width:100%; height:100%"></image>
+                    <image class="logo_image" src="{{url_for('static', filename='images/logo_keti.png')}}" ,
+                           style="width:100%; height:100%"></image>
+                </div>
+            </nav>
+
+            <!-- Page Content  -->
+            <div class="container">
+                <div id="content">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="collapse navbar-collapse">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info btn-space">
+                                <i class="fas fa-align-left"></i>
+                                <span> Toggle Sidebar </span>
+                            </button>
+                        </div>
+                    </nav>
+
+                    <div class="row">
+                        <!-- Blog Post Content Column -->
+                        <div class="col-lg-12">
+                            <hr>
+                            <h2> KETI Parking Lot (Site-1) </h2>
+                            <hr>
+
+                            <!-- Preview Image -->
+                            <img src="{{ url_for('video_feed') }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
